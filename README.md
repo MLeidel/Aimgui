@@ -1,31 +1,37 @@
 # aimgui
 ### AI Image generation and variation desktop GUI
 
-#### OpenAI v1.3.3 API with dall-e-2|3
+#### OpenAI Image Models
 
-aimgui.py is a desktop implementation of the openai API found at:
 
-https://platform.openai.com/docs/api-reference/images/create-edit
+It's a Python program for Linux, Mac, Windows.
 
-It's a Python program that should be compatible with all the major
-operating systems. By specifying a _prompt_ and an output image 
-file location, you can gererate AI images. In addition, you can
-specify for the output to go to your default web browser or
-to files or both. Furthermore, you can run image variation
-on an existing image file (with no prompt.)
+Edit the aimgui.ini file to set the model and theme.
 
-A log file is updated with _prompt_ and image file names.  
-Edit the aimgui.ini file to set default values.
+'1024x1024', '1024x1536', '1536x1024'  
+Image file sizes allowed for this model.
 
-256x256 | 512x512 | 1024x1024  
-These are the only image file sizes allowed for this model.
+### Models available as of 7/2026
 
-![aimgui desktop app](images/aimgui.png "aimgui.py")
+        gpt-image-2 — latest
+        gpt-image-1.5
+        gpt-image-1
+        gpt-image-1-mini
+
+### Themes
+        'cosmo', 'flatly', 'litera', 'minty', 'lumen',
+        'sandstone', 'yeti', 'pulse', 'united', 'morph',
+        'journal', 'darkly', 'superhero', 'solar', 'cyborg',
+        'vapor', 'simplex', 'cerculean'
+
+<center>
+![aimgui desktop app](images/AImgui1.png "aimgui.py")
+</center>
 
 Before using this application Python 3.x must be installed.
 
-Use Python >=3.7.1  
-_make sure you're using the latest __OpenAI__ module_ v1.3.3
+Use Python >=3.12
+_make sure you're using the latest OpenAI module_ 
 
 
 Use the requirements.txt file to install any modules you may be missing.
@@ -36,11 +42,12 @@ or
 pip install -r requirements.txt
 ```
 
-You will also have to Sign Up at https://openai.com/api/ and create an API Key.
-There is no cost to do so.
+You will also have to Sign Up at https://openai.com/api/ and create an API Key.  
 
-Before using the program you will need to set up an Environment Variable 
-called 'GPTKEY' whoes value will be your OpenAI API Key.
+Before using the program you will need to set up an Environment Variable  
+called 'GPTKEY' with the value of your OpenAI API Key.
 
 ---
 
+![aimgui desktop app](images/image_2026-07-05_11-08-46.png "aimgui.py")
+![aimgui desktop app](images/image_2026-07-05_10-40-56.png "aimgui.py")
