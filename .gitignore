@@ -1,1 +1,4 @@
 *.pyc
+__py*
+README.html
+

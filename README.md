@@ -1,7 +1,7 @@
 # aimgui
 ### AI Image generation and variation desktop GUI
 
-#### OpenAI Image Models
+#### Uses OpenAI Image Models
 
 
 It's a Python program for Linux, Mac, Windows.
@@ -11,12 +11,37 @@ Edit the aimgui.ini file to set the model and theme.
 '1024x1024', '1024x1536', '1536x1024'  
 Image file sizes allowed for this model.
 
-### Models available as of 7/2026
+### Config file
+
+The config file `aimgui` has several setting you can set up using a text editor.
+
+| _setting_ | _description_ | _comments_ |
+|-------  -:|  ----------   |:-----------|
+| **model=**   | Gpt image model | See OpenAI website |
+| **theme=**   | Name of theme | See below |
+| **filemgr=** | system file manager | See below |
+| **imgpath=** | "." for default path | A directory path on your system |
+
+
+### Models available as of 7/2026**
 
         gpt-image-2 — latest
         gpt-image-1.5
         gpt-image-1
         gpt-image-1-mini
+        
+### File Manager
+
+for instance `explorer` on Microsoft Windows  
+on MacOS `finder`  
+on Linux `thunar`, `nemo`, `nautilus`, ...  
+
+### Images Path
+
+The default images path is a directory called `images` in the application
+file's directory. Otherwise, You can enter a fullpath to any
+directory on your system.
+
 
 ### Themes
         'cosmo', 'flatly', 'litera', 'minty', 'lumen',

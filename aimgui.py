@@ -6,6 +6,7 @@ import os
 import sys
 import base64
 import time
+import subprocess
 from pathlib import Path
 from time import localtime, strftime
 from tkinter import filedialog
@@ -25,10 +26,19 @@ class Application(Frame):
 
         config = configparser.ConfigParser()
         config.read('aimgui.ini')
-        self.MyModel = config['Main']['model']  # no set in GUI
-        self.MyTheme = config['Main']['theme']  # no set in GUI
+        self.MyModel = config['Main']['model']
+        self.MyTheme = config['Main']['theme']
+        self.MyFMgr = config['Main']['filemgr']
+        self.MyPath = config['Main']['imgpath']
+
+        # establish path for image files
+        if self.MyPath != ".":
+            self.images_path = self.MyPath
+        else:
+            self.images_path = str(Path.cwd() / "images")
 
         self.create_widgets()
+
 
     def create_widgets(self):
         ''' creates GUI for app '''
@@ -90,6 +100,10 @@ class Application(Frame):
         btn_var_file = Button(self, text='Open',
                               command=self.btn_out_var_click, bootstyle='outline')
         btn_var_file.grid(row=5, column=3, sticky='w', padx=4, pady=4)
+        ToolTip(btn_var_file,
+                text="Image to modify",
+                bootstyle=(INVERSE),
+                wraplength=80)
 
 
         optionlist = ('', "low", "medium", "high", "auto")
@@ -103,6 +117,14 @@ class Application(Frame):
         self.vopt_bkgd.set(optionlist[3])  # from aimgui.ini
         opt_qual = OptionMenu(self, self.vopt_bkgd, *optionlist, bootstyle='outline')
         opt_qual.grid(row=7, column=2, sticky='w', padx=4, pady=4)
+
+        btn_var_file = Button(self, text='Images',
+                              command=self.btn_images_click, bootstyle='outline')
+        btn_var_file.grid(row=7, column=3, sticky='w', padx=4, pady=4)
+        ToolTip(btn_var_file,
+                text="View images directory",
+                bootstyle=(INVERSE),
+                wraplength=80)
 
 
         self.prompt = Text(self)
@@ -131,21 +153,26 @@ class Application(Frame):
     #   |_| |_|\__,_|_| |_|\__,_|_|\___|_|  |___/
     #
 
+    def btn_images_click(self):
+        ''' Opens the images directory with user's file manager '''
+        subprocess.Popen([self.MyFMgr, self.images_path])
+
+
     def btn_out_var_click(self):
         ''' Select an image file to generate a variation on.
         "images" is a subdirectory of the application directory '''
-        filename =  filedialog.askopenfilename(initialdir="images",
+        filename =  filedialog.askopenfilename(initialdir=self.images_path,
                     title = "Open Image File for Variation",
                     filetypes = (("png files", "*.png"),("all files", "*.*")))
         if filename is not None:
             self.vvar_file.set(filename)
             self.var_file.xview_moveto(1)  # scrolls to end of text in Entry
 
-    def make_filename(self) -> Path:
+    def make_filename(self) -> str:
         ''' create a unique file name for image file '''
         timenow = strftime('%Y-%m-%d_%H-%M-%S', localtime())
         img_filename = "image_" + timenow + ".png"
-        fpath = str(Path("images", img_filename))
+        fpath = str(Path(self.images_path, img_filename))
         return fpath
 
     def btn_create_click(self):
@@ -243,7 +270,7 @@ if os.path.isfile("winfi"):
         lcoor = f.read()
     root.geometry(lcoor.strip())
 else:
-    root.geometry("460x435") # WxH+left+top
+    root.geometry("475x435") # WxH+left+top
 
 try:
     icon_img = PhotoImage(file="AIcon.png")
