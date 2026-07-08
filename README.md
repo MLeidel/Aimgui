@@ -15,8 +15,8 @@ Image file sizes allowed for this model.
 
 The config file `aimgui` has several setting you can set up using a text editor.
 
-| _setting_ | _description_ | _comments_ |
-|-------  -:|  ----------   |:-----------|
+| _Setting_    | _Description_ | _Comments_ |
+|-------------:| ------------- |:-----------|
 | **model=**   | Gpt image model | See OpenAI website |
 | **theme=**   | Name of theme | See below |
 | **filemgr=** | system file manager | See below |
