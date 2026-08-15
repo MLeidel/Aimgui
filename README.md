@@ -1,15 +1,24 @@
 # aimgui
 ### AI Image generation and variation desktop GUI
 
-#### Uses OpenAI Image Models
-
-
 It's a Python program for Linux, Mac, Windows.
 
 Edit the aimgui.ini file to set the model and theme.
 
 '1024x1024', '1024x1536', '1536x1024'  
 Image file sizes allowed for this model.
+
+#### Uses OpenAI Image Models
+
+Use the `requirements.txt` file to install modules.  
+Make sure the `openai` model is up-to-date.
+
+```bash
+
+pip install -U -r requirements.txt
+
+```
+
 
 ### Config file
 

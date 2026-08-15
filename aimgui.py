@@ -31,6 +31,9 @@ class Application(Frame):
         self.MyFMgr = config['Main']['filemgr']
         self.MyPath = config['Main']['imgpath']
 
+        if len(sys.argv) > 1:   # when executed as part of a package with a theme
+            self.MyTheme = sys.argv[1]
+
         # establish path for image files
         if self.MyPath != ".":
             self.images_path = self.MyPath
@@ -136,7 +139,7 @@ class Application(Frame):
                            width=30,
                            height=5,
                            padx=5, # inner margin
-                           insertbackground='#fff',   # cursor color
+                           # insertbackground='#fff',   # cursor color
                            tabs=(efont.measure(' ' * 4),))
 
         btn_create = Button(self, text='Create', command=self.btn_create_click)
@@ -279,6 +282,6 @@ except Exception:
     pass
 
 root.protocol("WM_DELETE_WINDOW", save_location)  # UNCOMMENT TO SAVE GEOMETRY INFO
-root.resizable(0, 0) # no resize & removes maximize button
+# root.resizable(0, 0) # no resize & removes maximize button
 Application(root)
 root.mainloop()

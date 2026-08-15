@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+# refresh the installation files with new aimgui.py and README.html
+
+echo "";echo "";echo ""
+cp -vf aimgui.py ../installations/code/Aimgui/aimgui.py
+cp -vf README.html ../installations/code/Aimgui/README.html
+cd ../installations/code
+zip -r aimgui_install.zip Aimgui
+touch aimgui_install.zip
+cd ..
+./install_aimgui.sh
+echo "============= D O N E =============="
+
